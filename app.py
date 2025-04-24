@@ -2,7 +2,7 @@ import streamlit as st
 import openpyxl
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side, Color, GradientFill
-from googletrans import Translator
+from googletrans import Translator, LANGUAGES
 import os
 from pathlib import Path
 import tempfile
@@ -531,13 +531,12 @@ def createTranslateExcel(data, language, cellStyle, orginal_filename):
 
 # Step 2: Language selection (after file upload)
 if uploaded_file is not None:
-    languages = {
-        'French': 'fr',
-        'Spanish': 'es',
-        'German': 'de',
-        'Chinese (Simplified)': 'zh-cn',
-        'Hindi': 'hi'
-    }
+    
+    languages = {}
+
+    for code, language in LANGUAGES.items():
+        languages[language.title()] = code
+        
     lang_name = st.selectbox("Select target language", list(languages.keys()))
     lang_code = languages[lang_name]
 
