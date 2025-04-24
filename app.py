@@ -21,7 +21,7 @@ cellStyle = []
 translator = Translator()
 
 # Step 1: Upload file
-uploaded_file = st.file_uploader("Upload a text file", type=["xlsx"])
+uploaded_file = st.file_uploader("Upload a Excel file", type=["xlsx"])
 
 def open_workbook(path):
     workbook = load_workbook(filename=path)
